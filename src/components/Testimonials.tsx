@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 
 interface TestimonialProps {
   rating: number;
@@ -11,14 +10,14 @@ interface TestimonialProps {
 
 const Testimonial: React.FC<TestimonialProps> = ({ rating, text, name, title, usagePeriod }) => {
   return (
-    <div className="bg-white rounded-lg shadow-sm p-8">
+    <div className="bg-white rounded-lg shadow-sm p-8 hover-lift active-shrink">
       <div className="flex mb-3">
         {[...Array(5)].map((_, i) => (
           <img 
             key={i}
             src={i < rating ? "/images/star vector.svg" : "/images/star-empty.svg"}
             alt="star"
-            className="w-4 h-4 mr-1"
+            className={`w-4 h-4 mr-1 ${i < rating ? "pulse-effect" : ""}`}
           />
         ))}
         <span className="ml-2 text-gray-700">{rating.toFixed(1)}</span>
@@ -27,7 +26,7 @@ const Testimonial: React.FC<TestimonialProps> = ({ rating, text, name, title, us
       <p className="text-gray-700 mb-6">"{text}"</p>
       
       <div className="flex items-center">
-        <img src="/images/user.svg" alt={name} className="w-10 h-10 mr-4" />
+        <img src="/images/user.svg" alt={name} className="w-10 h-10 mr-4 hover-rotate" />
         <div>
           <h4 className="font-medium text-gray-900">{name}</h4>
           <p className="text-gray-500 text-sm">{title} | {usagePeriod}</p>
@@ -65,37 +64,26 @@ const Testimonials: React.FC = () => {
   return (
     <section id="testimonials" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-semibold text-gray-800 mb-4"
-          >
+        <div className="text-center mb-16 fade-in">
+          <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">
             用户的心声
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="text-gray-600 max-w-2xl mx-auto"
-          >
+          </h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">
             看看其他用户如何评价临在清单带来的全新任务管理体验
-          </motion.p>
+          </p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
-            <Testimonial
-              key={index}
-              rating={testimonial.rating}
-              text={testimonial.text}
-              name={testimonial.name}
-              title={testimonial.title}
-              usagePeriod={testimonial.usagePeriod}
-            />
+            <div key={index} className="slide-up" style={{ animationDelay: `${index * 0.2}s` }}>
+              <Testimonial
+                rating={testimonial.rating}
+                text={testimonial.text}
+                name={testimonial.name}
+                title={testimonial.title}
+                usagePeriod={testimonial.usagePeriod}
+              />
+            </div>
           ))}
         </div>
       </div>

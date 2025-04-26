@@ -19,7 +19,7 @@ const VerticalTabs = () => {
   return (
     <section id="vertical-tabs" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 fade-in">
           <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">
             直观高效的任务管理体验
           </h2>
@@ -32,7 +32,7 @@ const VerticalTabs = () => {
         <div className="mb-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* 左侧内容 */}
-            <div>
+            <div className="slide-up">
               <h3 className="text-2xl font-semibold text-gray-900 mb-6">垂直标签，一触即达</h3>
               
               <p className="text-gray-600 mb-8">
@@ -44,9 +44,10 @@ const VerticalTabs = () => {
                 {features.map((feature, index) => (
                   <li
                     key={index}
-                    className="flex items-start"
+                    className="flex items-start hover-lift"
+                    style={{ animationDelay: `${index * 0.2}s` }}
                   >
-                    <div className="bg-[#B2DFDB]/20 rounded-full p-1 mr-3 mt-0.5">
+                    <div className="bg-[#B2DFDB]/20 rounded-full p-1 mr-3 mt-0.5 pulse-effect">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#009688]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
@@ -59,7 +60,7 @@ const VerticalTabs = () => {
             
             {/* 右侧图片 */}
             <div className="flex items-center justify-center">
-              <div className="drop-shadow-2xl">
+              <div className="drop-shadow-2xl hover-lift">
                 <img 
                   src="/images/vertical-tabs-preview.png" 
                   alt="临在清单应用界面展示" 
@@ -76,7 +77,7 @@ const VerticalTabs = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* 左侧图片 - 调换位置 */}
             <div className="flex items-center justify-center">
-              <div className="drop-shadow-2xl">
+              <div className="drop-shadow-2xl hover-lift">
                 <img 
                   src="/images/color-system-preview.png" 
                   alt="临在清单色彩系统展示" 
@@ -87,7 +88,7 @@ const VerticalTabs = () => {
             </div>
             
             {/* 右侧内容 - 调换位置 */}
-            <div>
+            <div className="slide-up" style={{ animationDelay: "0.3s" }}>
               <h3 className="text-2xl font-semibold text-gray-900 mb-6">智能色彩，增强记忆</h3>
               
               <p className="text-gray-600 mb-8">
@@ -96,19 +97,19 @@ const VerticalTabs = () => {
               </p>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                <div className="bg-gradient-to-br from-[#FF9A8B] to-[#FF6B6B] rounded-xl p-4 text-white">
+                <div className="bg-gradient-to-br from-[#FF9A8B] to-[#FF6B6B] rounded-xl p-4 text-white hover-lift gradient-move">
                   <h4 className="font-semibold text-lg mb-1">工作清单</h4>
                   <p className="text-white/90 text-sm">日出橙红 → 正午鎏金</p>
                 </div>
-                <div className="bg-gradient-to-br from-[#A1C4FD] to-[#C2E9FB] rounded-xl p-4 text-white">
+                <div className="bg-gradient-to-br from-[#A1C4FD] to-[#C2E9FB] rounded-xl p-4 text-white hover-lift gradient-move">
                   <h4 className="font-semibold text-lg mb-1">学习计划</h4>
                   <p className="text-white/90 text-sm">青瓷釉色 → 竹月蓝</p>
                 </div>
-                <div className="bg-gradient-to-br from-[#F6D365] to-[#FDA085] rounded-xl p-4 text-white">
+                <div className="bg-gradient-to-br from-[#F6D365] to-[#FDA085] rounded-xl p-4 text-white hover-lift gradient-move">
                   <h4 className="font-semibold text-lg mb-1">生活备忘</h4>
                   <p className="text-white/90 text-sm">杏仁白 → 晨雾灰</p>
                 </div>
-                <div className="bg-gradient-to-br from-[#84FAB0] to-[#8FD3F4] rounded-xl p-4 text-white">
+                <div className="bg-gradient-to-br from-[#84FAB0] to-[#8FD3F4] rounded-xl p-4 text-white hover-lift gradient-move">
                   <h4 className="font-semibold text-lg mb-1">项目管理</h4>
                   <p className="text-white/90 text-sm">薄荷绿 → 湖水蓝</p>
                 </div>

@@ -15,7 +15,8 @@ const ColorCard = ({ title, description, gradientFrom, gradientTo }: ColorCardPr
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      className="rounded-2xl overflow-hidden relative shadow-md"
+      whileHover={{ y: -5, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
+      className="rounded-2xl overflow-hidden relative shadow-md hover-lift active-shrink gradient-move"
     >
       <div className="bg-gradient-to-br h-full min-h-[240px]" 
            style={{ backgroundImage: `linear-gradient(to bottom right, ${gradientFrom}, ${gradientTo})` }}>
@@ -43,13 +44,17 @@ const TechCard = ({ title, description, iconSrc, iconBgColor, delay = 0 }: TechC
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay }}
       viewport={{ once: true }}
-      className="bg-gray-100 rounded-2xl p-6"
+      whileHover={{ y: -5, boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)" }}
+      className="bg-gray-100 rounded-2xl p-6 hover-lift active-shrink"
     >
       <div className="flex items-center mb-3">
-        <div className="mr-3 rounded-full p-2 w-8 h-8 flex items-center justify-center" 
-             style={{ backgroundColor: iconBgColor }}>
+        <motion.div 
+          className="mr-3 rounded-full p-2 w-8 h-8 flex items-center justify-center hover-rotate" 
+          style={{ backgroundColor: iconBgColor }}
+          whileHover={{ rotate: 10 }}
+        >
           <img src={iconSrc} alt={title} width={16} height={16} />
-        </div>
+        </motion.div>
         <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
       </div>
       <p className="text-gray-600 text-sm">{description}</p>
@@ -109,7 +114,7 @@ const ColorSystem = () => {
   return (
     <section id="color-system" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 fade-in">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -133,19 +138,24 @@ const ColorSystem = () => {
         {/* 色彩系统卡片展示 */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {cards.map((card, index) => (
-            <ColorCard
-              key={index}
-              title={card.title}
-              description={card.description}
-              gradientFrom={card.gradientFrom}
-              gradientTo={card.gradientTo}
-            />
+            <div key={index} className="slide-up" style={{ animationDelay: `${index * 0.2}s` }}>
+              <ColorCard
+                title={card.title}
+                description={card.description}
+                gradientFrom={card.gradientFrom}
+                gradientTo={card.gradientTo}
+              />
+            </div>
           ))}
         </div>
 
         {/* 色彩记忆增强技术 */}
-        <div className="bg-white rounded-2xl p-8 shadow-md">
-          <div className="text-center mb-12">
+        <motion.div 
+          className="bg-white rounded-2xl p-8 shadow-md hover-lift"
+          whileHover={{ boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.1)" }}
+          transition={{ duration: 0.3 }}
+        >
+          <div className="text-center mb-12 fade-in">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -168,17 +178,18 @@ const ColorSystem = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {techs.map((tech, index) => (
-              <TechCard
-                key={index}
-                title={tech.title}
-                description={tech.description}
-                iconSrc={tech.iconSrc}
-                iconBgColor={tech.iconBgColor}
-                delay={index * 0.1}
-              />
+              <div key={index} className="slide-up" style={{ animationDelay: `${index * 0.15}s` }}>
+                <TechCard
+                  title={tech.title}
+                  description={tech.description}
+                  iconSrc={tech.iconSrc}
+                  iconBgColor={tech.iconBgColor}
+                  delay={index * 0.1}
+                />
+              </div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

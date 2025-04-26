@@ -15,10 +15,11 @@ const FeatureItem = ({ iconSrc, bgColor, title, description }: FeatureItemProps)
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      className="bg-white rounded-xl shadow-md p-8"
+      className="bg-white rounded-xl shadow-md p-8 hover-lift active-shrink"
+      whileHover={{ y: -5 }}
     >
       <div className="flex items-center mb-4">
-        <div className={`w-12 h-12 flex items-center justify-center mr-4 rounded-full ${bgColor}`}>
+        <div className={`w-12 h-12 flex items-center justify-center mr-4 rounded-full ${bgColor} hover-rotate`}>
           <img src={iconSrc} alt={title} className="h-6 w-6" />
         </div>
         <h3 className="text-xl font-semibold text-gray-800">{title}</h3>

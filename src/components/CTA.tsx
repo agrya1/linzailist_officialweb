@@ -21,9 +21,15 @@ const DownloadButton: React.FC<DownloadButtonProps> = ({
       href="#"
       className={`${bgColor} ${textColor} ${
         hasBorder ? 'border border-gray-200' : ''
-      } py-3 px-6 rounded-lg flex items-center justify-center gap-3 hover:opacity-90 transition-opacity`}
+      } py-3 px-6 rounded-lg flex items-center justify-center gap-3 hover:opacity-90 transition-opacity hover-lift active-shrink`}
     >
-      <img src={`/images/${icon}`} alt="" className="w-5 h-5" />
+      <motion.img 
+        src={`/images/${icon}`} 
+        alt="" 
+        className="w-5 h-5" 
+        whileHover={{ rotate: 10 }}
+        transition={{ duration: 0.3 }}
+      />
       <span className="text-sm font-medium">{text}</span>
     </a>
   );
@@ -33,7 +39,11 @@ const CTA: React.FC = () => {
   return (
     <section id="cta" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12">
+        <motion.div 
+          className="bg-white rounded-2xl shadow-lg p-8 md:p-12"
+          whileHover={{ boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
+          transition={{ duration: 0.3 }}
+        >
           <div className="text-center max-w-3xl mx-auto">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -85,7 +95,7 @@ const CTA: React.FC = () => {
               />
             </motion.div>
           </div>
-        </div>
+        </motion.div>
         
         {/* 订阅更新部分 */}
         <div className="mt-16 text-center">
@@ -106,9 +116,13 @@ const CTA: React.FC = () => {
                 placeholder="输入您的邮箱地址"
                 className="flex-grow px-4 py-3 rounded-l-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-light focus:border-transparent"
               />
-              <button className="bg-[#B2DFDB] text-white px-6 py-3 rounded-r-lg font-medium">
+              <motion.button 
+                className="bg-[#B2DFDB] text-white px-6 py-3 rounded-r-lg font-medium active-shrink"
+                whileHover={{ backgroundColor: "#9ED4CC" }}
+                transition={{ duration: 0.3 }}
+              >
                 订阅
-              </button>
+              </motion.button>
             </div>
           </div>
           
