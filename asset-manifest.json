@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/linzailist2/static/css/main.20ced303.css",
-    "main.js": "/linzailist2/static/js/main.72135c6a.js",
-    "static/js/453.f9502a8d.chunk.js": "/linzailist2/static/js/453.f9502a8d.chunk.js",
-    "index.html": "/linzailist2/index.html",
-    "main.20ced303.css.map": "/linzailist2/static/css/main.20ced303.css.map",
-    "main.72135c6a.js.map": "/linzailist2/static/js/main.72135c6a.js.map",
-    "453.f9502a8d.chunk.js.map": "/linzailist2/static/js/453.f9502a8d.chunk.js.map"
+    "main.css": "/linzailist_officialweb/static/css/main.20ced303.css",
+    "main.js": "/linzailist_officialweb/static/js/main.7f228bee.js",
+    "static/js/453.f9502a8d.chunk.js": "/linzailist_officialweb/static/js/453.f9502a8d.chunk.js",
+    "index.html": "/linzailist_officialweb/index.html",
+    "main.20ced303.css.map": "/linzailist_officialweb/static/css/main.20ced303.css.map",
+    "main.7f228bee.js.map": "/linzailist_officialweb/static/js/main.7f228bee.js.map",
+    "453.f9502a8d.chunk.js.map": "/linzailist_officialweb/static/js/453.f9502a8d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.20ced303.css",
-    "static/js/main.72135c6a.js"
+    "static/js/main.7f228bee.js"
   ]
 }
